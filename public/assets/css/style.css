@@ -846,7 +846,7 @@ ul.dropdown-menu.drp-mnu li {
 /*inner-block--*/
 .inner-block {
     padding: 0em 2em 4em 3em;
-    background: url(https://apps.baritokualakab.go.id/sakip/assets/images/blackground-7.jpg) no-repeat center fixed;
+    background: url('/assets/images/blackground-7.jpg') no-repeat center fixed;
     background-size: cover;
     min-height:100vh!important;
 }

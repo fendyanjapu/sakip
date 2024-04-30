@@ -43,4 +43,14 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function menu()
+    {
+        return $this->hasMany(Menu::class);
+    }
+
+    public function jenisSopd()
+    {
+        return $this->belongsTo(JenisSopd::class);
+    }
 }
