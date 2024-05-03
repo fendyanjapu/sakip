@@ -20,10 +20,10 @@
 		$('#cari').click(function(){
 			var id_sopd  = $('#sopd').val();
 			var keyword  = $('#keyword').val();
-			var jenis    = $('#jenis').val();
+			var jenis    = $('#jenisSopd').val();
 				$.ajax({
 					type   : "GET",
-					url    : "#",
+					url    : "{{ route('home.find') }}",
 					data   : "id_sopd="+id_sopd+"&keyword="+keyword+"&jenis="+jenis,
 					cache  : false,
 					success: function(hasil){

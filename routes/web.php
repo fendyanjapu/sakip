@@ -17,3 +17,5 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('home/jenis-sopd', [HomeController::class, 'jenisSopd'])->name('home.jenisSopd');
+
+Route::get('home/find', [HomeController::class, 'find'])->name('home.find');
