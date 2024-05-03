@@ -21,29 +21,27 @@ class HomeController extends Controller
     {
         $id = $request->input('id');
         $sopds = User::where('jenis_sopd', '=', $id)->orderBy('nama_sopd')->get();
-        echo "<option value='' disabled selected hidden></option>";
+        echo "<option value='' selected hidden></option>";
         foreach ($sopds as $sopd) {
-            echo "<option value='".$sopd->id_sopd."'>".$sopd->nama_sopd."</option>";
+            echo "<option value='".$sopd->id."'>".$sopd->nama_sopd."</option>";
         }
     }
 
     public function find(Request $request)
     {
-        $idSopd = $request->input('id_sopd');
-        $keyword = $request->input('keyword');
-        $jenisSopd = $request->input('jenis');
+        $idSopd = $request->id_sopd;
+        $keyword = $request->keyword;
+        $jenisSopd = $request->jenis;
 
-        $menus = Menu::with('user')->where('user_id', '!=', '50');
+        $menus = Menu::join('users', 'users.id', '=', 'menus.user_id');
 
-        if ($jenisSopd != '') {
-            $menus->whereHas('user', function($q) use ($jenisSopd) {
-                $q->where('jenis_sopd', '=', $jenisSopd);
-            });
+        if ($jenisSopd) {
+            $menus->where('jenis_sopd', '=', $jenisSopd);
         }
-        if ($idSopd != '') {
+        if ($idSopd) {
             $menus->where('user_id', '=', $idSopd);
         }
-        if ($keyword != '') {
+        if ($keyword) {
             $menus->where('judul', 'LIKE', "%{$keyword}%");
         }
         
@@ -60,7 +58,7 @@ class HomeController extends Controller
         foreach ($menus->get() as $menu) {
             echo '<tr>
             <td style="text-align: center">'.++$no.'</td>
-            <td>'.$menu->user?->nama_sopd.'</td>
+            <td>'.$menu->user->nama_sopd.'</td>
             <td>'.$menu->judul.'</td>
             <td><a href="'.$menu->link.'/'.$menu->idmenu.'" target="_blank">Lihat<a></td>
             </tr>';

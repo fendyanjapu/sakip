@@ -18,18 +18,18 @@
 		});
 		// Pencarian data
 		$('#cari').click(function(){
-			var id_sopd  = $('#sopd').val();
-			var keyword  = $('#keyword').val();
-			var jenis    = $('#jenisSopd').val();
-				$.ajax({
-					type   : "GET",
-					url    : "{{ route('home.find') }}",
-					data   : "id_sopd="+id_sopd+"&keyword="+keyword+"&jenis="+jenis,
-					cache  : false,
-					success: function(hasil){
-						$('#konten').html(hasil);
-					}
-				});
+			let id_sopd  = $('#sopd').val();
+			let keyword  = $('#keyword').val();
+			let jenis    = $('#jenisSopd').val();
+			$.ajax({
+				type   : "GET",
+				url    : "{{ route('home.find') }}",
+				data   : "id_sopd="+id_sopd+"&keyword="+keyword+"&jenis="+jenis,
+				cache  : false,
+				success: function(hasil){
+					$('#konten').html(hasil);
+				}
+			});
 		});
 	});
 </script>
@@ -42,7 +42,7 @@
 		<tr>
 			<div class="asoy"<td>
 				<select name="jenisSopd" id="jenisSopd" class="form-control">
-					<option value="" disabled selected hidden>Pilih Kategori</option>
+					<option value="" selected hidden>Pilih Kategori</option>
 					@foreach ($jenisSopds as $jenisSopd)
 					<option value="{{ $jenisSopd->id }}">
 						{{ $jenisSopd->nama }}
@@ -52,7 +52,7 @@
 			</td></div>
 			<div class="asoy1"<td>
 				<select name="sopd" id="sopd" class="form-control">
-					<option value="" disabled selected hidden>PILIH NAMA</option>
+					<option value="" selected hidden>PILIH NAMA</option>
 					@foreach ($sopds as $sopd)
 					<option value="{{ $sopd->id }}">
 						{{ $sopd->nama_sopd }}
