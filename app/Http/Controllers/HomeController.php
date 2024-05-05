@@ -6,6 +6,8 @@ use App\Models\Menu;
 use App\Models\User;
 use App\Models\JenisSopd;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class HomeController extends Controller
 {
@@ -19,7 +21,7 @@ class HomeController extends Controller
 
     public function jenisSopd(Request $request)
     {
-        $id = $request->input('id');
+        $id = $request->id;
         $sopds = User::where('jenis_sopd', '=', $id)->orderBy('nama_sopd')->get();
         echo "<option value='' selected hidden></option>";
         foreach ($sopds as $sopd) {
@@ -58,10 +60,42 @@ class HomeController extends Controller
         foreach ($menus->get() as $menu) {
             echo '<tr>
             <td style="text-align: center">'.++$no.'</td>
-            <td>'.$menu->user->nama_sopd.'</td>
+            <td>'.$menu->nama_sopd.'</td>
             <td>'.$menu->judul.'</td>
             <td><a href="'.$menu->link.'/'.$menu->idmenu.'" target="_blank">Lihat<a></td>
             </tr>';
+        }
+    }
+
+    public function login()
+    {
+        return view('home.login');
+    }
+
+    public function loginAct(Request $request)
+    {
+        $username = $request->username;
+        $cek = array('username'=>$username,'password'=>sha1($request->password));
+        $user = User::where($cek);
+        if($user->count() == null){
+            return view('home.login-failed');
+        } else {
+            foreach ($user->get() as $key) {
+                $level = $key->level;
+                Session::put('idSopd', $key->id);
+                Session::put('username', $username);
+                Session::put('namaSopd', $key->nama_sopd);
+                Session::put('level', $level);
+                Session::put('jenisSopd', $key->jenis_sopd);
+            }
+
+            if ($level == 1) {
+                // return redirect()->to('superadmin');
+                return "superadmin";
+            } else {
+                return redirect()->to('admin');
+            }
+            
         }
     }
 }
