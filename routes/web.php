@@ -40,4 +40,4 @@ Route::get('arsip/docs/{id}', [ArsipController::class, 'docs'])->name('docs');
 
 Route::post('arsip/save', [ArsipController::class, 'save'])->name('arsip.save');
 
-Route::delete('arsip/delete', [ArsipController::class, 'delete'])->name('arsip.delete');
+Route::get('arsip/delete/{id}', [ArsipController::class, 'delete'])->name('arsip.delete');

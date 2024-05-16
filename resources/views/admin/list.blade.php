@@ -83,12 +83,8 @@
 				<a href="{{ route('docs', ['id' => $arsip->id]) }}" target="_blank" class="btn btn-success" title="Lihat"><i class="fa fa-eye"></i></a>
 				<a href="#" target="_blank" class="btn btn-default" title="Unduh"><i class="fa fa-download"></i></a>
 				<?php if (Session::get('idSopd') != null && Session::get('level') != 1): ?>
-				<a href="#" class="btn btn-default" title="Hapus"><i class="fa fa-eraser"></i></a>
-				<form action="{{ route('dokumentasi-kegiatan.destroy', ['dokumentasi_kegiatan' => $dokumentasi_kegiatan]) }}" method="post">
-					@csrf
-					@method('delete')
-					<button class="btn btn-danger" onclick="return confirm('Hapus data?')">Hapus</button>
-				</form>
+				<a href="{{ route('arsip.delete', ['id' => $arsip->id]) }}" class="btn btn-default" title="Hapus"><i class="fa fa-eraser"></i></a>
+				
 				<?php endif ?>
 			</td>
 		</tr>

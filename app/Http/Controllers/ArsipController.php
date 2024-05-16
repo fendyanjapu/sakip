@@ -63,10 +63,11 @@ class ArsipController extends Controller
         // return redirect()->route('home');
     }
 
-    public function delete(Arsip $arsip)
+    public function delete($id)
     {
+        $arsip = Arsip::find($id);
         Storage::delete($arsip->dokumen);
-        $arsip::destroy($arsip->id);
+        $arsip->delete();
         
         return redirect()->route('arsip', ['jenis_dokumen' => $arsip->jenis_dokumen])->with('success', 'File berhasil dihapus');
     }

@@ -116,9 +116,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							<li><a href="#" data-toggle="tooltip" title="IKU"><div class="item-sidemenu"><i class="fa fa-check-square"></i><span>IKU</span>
 								</div><div class="item-side-very-side"><span class="fa fa-angle-right"></span></div></a>
 								<ul>
-									<li><a href="">IKU Esselon 2</a></li>
-									<li><a href="">IKU Esselon 3</a></li>
-									<li><a href="">IKU Esselon 4</a></li>
+									<li><a href="{{ route('arsip', ['jenis_dokumen' => 'IKU Esselon 2']) }}">IKU Esselon 2</a></li>
+									<li><a href="{{ route('arsip', ['jenis_dokumen' => 'IKU Esselon 3']) }}">IKU Esselon 3</a></li>
+									<li><a href="{{ route('arsip', ['jenis_dokumen' => 'IKU Esselon 4']) }}">IKU Esselon 4</a></li>
 								</ul>
 							</li>
 							<li id="menu-home" ><a href="{{ route('arsip', ['jenis_dokumen' => 'Perjanjian Kinerja']) }}" data-toggle="tooltip" title="Perjanjian Kinerja">
@@ -134,17 +134,17 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							<li><a href="#"><div class="item-sidemenu"><i class="fa fa-file" data-toggle="tooltip" title = "RFK"></i><span>RFK Format 1 dan e81</span>
 								</div><div class="item-side-very-side"><span class="fa fa-angle-right"></span></div></a>
 								<ul>
-									<li><a href="">Program</a></li>
-									<li><a href="">Kegiatan</a></li>
-									<li><a href="">Subkegiatan</a></li>
-									<li><a href="">Realisasi</a></li>
+									<li><a href="#">Program</a></li>
+									<li><a href="#">Kegiatan</a></li>
+									<li><a href="#">Subkegiatan</a></li>
+									<li><a href="#">Realisasi</a></li>
 								</ul>
 							</li>
 							<li><a href="#"><div class="item-sidemenu"><i class="fa fa-file" data-toggle="tooltip" title = "Cetak RFK"></i><span>Cetak RFK</span>
 								</div><div class="item-side-very-side"><span class="fa fa-angle-right"></span></div></a>
 								<ul>
-									<li><a href="">RFK e81</a></li>
-									<li><a href="">RFK Format 1</a></li>
+									<li><a href="#">RFK e81</a></li>
+									<li><a href="#">RFK Format 1</a></li>
 								</ul>
 							</li>
 							<li id="menu-home" ><a href="{{ route('arsip', ['jenis_dokumen' => 'Laporan Kinerja']) }}" data-toggle="tooltip" title="Laporan Kinerja">
