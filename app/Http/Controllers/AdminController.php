@@ -9,7 +9,12 @@ class AdminController extends Controller
 {
     public function index()
     {
-        $user = Session::get('namaSopd');
-        return $user;       
+        return view('admin.index');      
+    }
+
+    public function logout()
+    {
+        Session::flush();
+        return redirect()->to('home/login');
     }
 }

@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Arsip;
 use App\Models\Menu;
 use App\Models\User;
 use App\Models\JenisSopd;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use Response;
 
 class HomeController extends Controller
 {
@@ -35,7 +37,7 @@ class HomeController extends Controller
         $keyword = $request->keyword;
         $jenisSopd = $request->jenis;
 
-        $menus = Menu::join('users', 'users.id', '=', 'menus.user_id');
+        $menus = Menu::select('*','menus.id as idmenu')->join('users', 'users.id', '=', 'menus.user_id');
 
         if ($jenisSopd) {
             $menus->where('jenis_sopd', '=', $jenisSopd);
@@ -58,13 +60,41 @@ class HomeController extends Controller
 		</tr>';
 
         foreach ($menus->get() as $menu) {
+            $url = route('home.arsip', ['id_menu' => $menu->idmenu]);
             echo '<tr>
             <td style="text-align: center">'.++$no.'</td>
             <td>'.$menu->nama_sopd.'</td>
             <td>'.$menu->judul.'</td>
-            <td><a href="'.$menu->link.'/'.$menu->idmenu.'" target="_blank">Lihat<a></td>
+            <td><a href="'.$url.'" target="_blank">Lihat<a></td>
             </tr>';
         }
+    }
+
+    public function arsip($id_menu)
+    {
+        // tambah jumlah views
+        $menu = Menu::find($id_menu);
+        $views = $menu->views + 1;
+        $data['views'] = $views;
+        $menu->update($data);
+
+        $user = User::find($menu->user_id);
+        $sopd = $user->nama_sopd;
+
+        $arsip = Arsip::where('nama_dokumen', '=', $menu->judul)->get();
+
+        return view('home.arsip', [
+            'query' => $arsip,
+            'sopd' => $sopd
+        ]);
+    }
+
+    public function download($id)
+    {
+        $arsip = Arsip::find($id);
+        $file = public_path()."/storage/file/arsip/".$arsip->user_id."/".$arsip->dokumen;
+        $headers = array('Content-Type: application/pdf',);
+        return Response::download($file, $arsip->dokumen, $headers);
     }
 
     public function login()

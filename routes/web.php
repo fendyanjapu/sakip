@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ArsipController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,8 +22,22 @@ Route::get('home/jenis-sopd', [HomeController::class, 'jenisSopd'])->name('home.
 
 Route::get('home/find', [HomeController::class, 'find'])->name('home.find');
 
+Route::get('home/arsip/{id_menu}', [HomeController::class, 'arsip'])->name('home.arsip');
+
+Route::get('home/download/{id}', [HomeController::class, 'download'])->name('download');
+
 Route::get('home/login', [HomeController::class, 'login'])->name('home.login');
 
 Route::post('home/login', [HomeController::class, 'loginAct'])->name('home.loginAct');
 
+Route::get('admin/logout', [AdminController::class, 'logout'])->name('logout');
+
 Route::get('admin', [AdminController::class, 'index'])->name('admin');
+
+Route::get('arsip/{jenis_dokumen}', [ArsipController::class, 'index'])->name('arsip');
+
+Route::get('arsip/docs/{id}', [ArsipController::class, 'docs'])->name('docs');
+
+Route::post('arsip/save', [ArsipController::class, 'save'])->name('arsip.save');
+
+Route::delete('arsip/delete', [ArsipController::class, 'delete'])->name('arsip.delete');
