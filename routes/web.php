@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ArsipController;
+use App\Http\Controllers\CapaianKinerjaController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -41,3 +42,5 @@ Route::get('arsip/docs/{id}', [ArsipController::class, 'docs'])->name('docs');
 Route::post('arsip/save', [ArsipController::class, 'save'])->name('arsip.save');
 
 Route::get('arsip/delete/{id}', [ArsipController::class, 'delete'])->name('arsip.delete');
+
+Route::resource('capaian-kinerja', CapaianKinerjaController::class)->except('show');

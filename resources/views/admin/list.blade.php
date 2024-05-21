@@ -81,7 +81,7 @@
 			<td><?php echo $arsip->dokumen ?></td>
 			<td style="text-align: center">
 				<a href="{{ route('docs', ['id' => $arsip->id]) }}" target="_blank" class="btn btn-success" title="Lihat"><i class="fa fa-eye"></i></a>
-				<a href="#" target="_blank" class="btn btn-default" title="Unduh"><i class="fa fa-download"></i></a>
+				<a href="{{ route('download', ['id' => $arsip->id]) }}" target="_blank" class="btn btn-default" title="Unduh"><i class="fa fa-download"></i></a>
 				<?php if (Session::get('idSopd') != null && Session::get('level') != 1): ?>
 				<a href="{{ route('arsip.delete', ['id' => $arsip->id]) }}" class="btn btn-default" title="Hapus"><i class="fa fa-eraser"></i></a>
 				
