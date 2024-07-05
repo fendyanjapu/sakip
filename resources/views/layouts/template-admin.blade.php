@@ -127,7 +127,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 								</div><div class="item-side-very-side"><span class="fa fa-angle-right"></span></div></a>
 								<ul>
 									<li><a href="{{ route('capaian-kinerja.index') }}">Capaian Kinerja Per Triwulan</a></li>
-									<li><a href="">Capaian Kinerja Per Bulan (IKU)</a></li>
+									<li><a href="{{ route('capaian-kinerja-bulanan.index') }}">Capaian Kinerja Per Bulan (IKU)</a></li>
 									<li><a href="">Capaian Kinerja Per Bulan (RFK)</a></li>
 								</ul>
 							</li>
