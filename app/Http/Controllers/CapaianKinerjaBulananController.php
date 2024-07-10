@@ -27,7 +27,7 @@ class CapaianKinerjaBulananController extends Controller
      */
     public function create()
     {
-        //
+        return view('capaian-kinerja-bulanan.create');
     }
 
     /**
@@ -35,7 +35,13 @@ class CapaianKinerjaBulananController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        $data['tahun'] = date('Y');
+        $data['user_id'] = Session::get('idSopd');
+
+        CapaianKinerjaBulanan::create($data);
+
+        return redirect()->route('capaian-kinerja-bulanan.index')->with('success', 'Berhasil disimpan');
     }
 
     /**
@@ -51,7 +57,8 @@ class CapaianKinerjaBulananController extends Controller
      */
     public function edit(CapaianKinerjaBulanan $capaianKinerjaBulanan)
     {
-        //
+        $query = $capaianKinerjaBulanan::findOrFail($capaianKinerjaBulanan->id);
+        return view('capaian-kinerja-bulanan.edit', ['capaianKinerjaBulanan' => $query]);
     }
 
     /**
@@ -59,7 +66,10 @@ class CapaianKinerjaBulananController extends Controller
      */
     public function update(Request $request, CapaianKinerjaBulanan $capaianKinerjaBulanan)
     {
-        //
+        $query = $capaianKinerjaBulanan::findOrFail($capaianKinerjaBulanan->id);
+        $query->update($request->all());
+
+        return redirect()->route('capaian-kinerja-bulanan.index')->with('success', 'Berhasil diubah');
     }
 
     /**
@@ -67,6 +77,8 @@ class CapaianKinerjaBulananController extends Controller
      */
     public function destroy(CapaianKinerjaBulanan $capaianKinerjaBulanan)
     {
-        //
+        CapaianKinerjaBulanan::destroy($capaianKinerjaBulanan->id);
+
+        return redirect()->route('capaian-kinerja-bulanan.index')->with('success', 'Berhasil dihapus');
     }
 }

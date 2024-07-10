@@ -53,7 +53,7 @@
       <th style="vertical-align: middle;" rowspan="3" >IKU</th>
       <?php if (Session::get('idSopd') != ''): ?>
         
-          <th rowspan="3" width="180px"></th>
+          <th style="vertical-align: middle;" rowspan="3" width="180px">#</th>
         
       <?php endif; ?>
       <th style="vertical-align: middle;" rowspan="3" >SATUAN</th>
@@ -116,7 +116,7 @@
   <tbody>
     @foreach ($query as $key)
       <tr>
-        <td style="text-align: center"><?php echo ++$no ?></td>
+        <td style="text-align: center"><?php echo $loop->iteration ?></td>
         <?php if (Session::get('level') == '1'): ?>
         <td><?php echo $key->nama_sopd ?></td>
         <?php endif; ?>
@@ -125,7 +125,7 @@
           
             <td style="text-align: center">
               <a href="{{ route('capaian-kinerja-bulanan.edit', ['capaian_kinerja_bulanan' => $key->id]) }}"
-                data-toggle="tooltip" title="Edit" class="btn btn-success"><i class="fa fa-edit"></i></a>
+                data-toggle="tooltip" title="Edit" class="btn btn-success"><i class="fa fa-edit"></i>Edit</a>
                 <form action="{{ route('capaian-kinerja-bulanan.destroy', ['capaian_kinerja_bulanan' => $key->id]) }}" method="POST">
                     @csrf
                     <button class="btn btn-primary" onclick="return confirm('Hapus data?')"><i class="fa fa-trash"> Hapus</i></button>
