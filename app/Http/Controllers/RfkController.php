@@ -35,11 +35,28 @@ class RfkController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
-        $data['file_dukung'] = 'ok';
-        $data['nama_file'] = 'ok';
+        $sopd = Session::get('idSopd');
+        $rules = [
+            'bulan' => "required|max:255",
+            'target_fisik' => "required|max:255",
+            'target_keuangan' => "required|max:255",
+            'realisasi_fisik' => "required|max:255",
+            'realisasi_keuangan' => "required|max:255",
+            'prosentase_fisik' => "required|max:255",
+            'prosentase_keuangan' => "required|max:255",
+            'file_dukung' => "required|file|max:8192",
+        ];
+        $data = $request->validate($rules);
+
+        if ($request->file('file_dukung')) {
+            $filename = $request->file('file_dukung')->getClientOriginalName();
+            $request->file('file_dukung')->storeAs('file/arsip/'.$sopd, $filename);
+            $data['file_dukung'] = $filename;
+            $data['nama_file'] = pathinfo($filename, PATHINFO_FILENAME);
+        }
+        
         $data['tahun'] = date('Y');
-        $data['user_id'] = Session::get('idSopd');
+        $data['user_id'] = $sopd;
 
         Rfk::create($data);
 
@@ -51,7 +68,9 @@ class RfkController extends Controller
      */
     public function show(Rfk $rfk)
     {
-        //
+        $arsip = rfk::find($rfk->id);
+
+        return view('rfk.show', ['rfk' => $rfk]);
     }
 
     /**

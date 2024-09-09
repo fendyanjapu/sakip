@@ -49,4 +49,4 @@ Route::resource('capaian-kinerja', CapaianKinerjaController::class)->except('sho
 
 Route::resource('capaian-kinerja-bulanan', CapaianKinerjaBulananController::class)->except('show');
 
-Route::resource('rfk', RfkController::class)->except('show');
+Route::resource('rfk', RfkController::class);

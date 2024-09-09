@@ -89,7 +89,11 @@
         <td style="text-align: center"><?php echo $key->realisasi_fisik ?></td>
         <td style="text-align: center"><?php echo $key->prosentase_fisik ?></td>
         <td style="text-align: center"><?php echo $key->prosentase_keuangan ?></td>
-        <td><?php echo $key->file_dukung ?></td>
+        <td>
+          <a href="{{ route('rfk.show', ['rfk' => $key->id]) }}" target="_blank">
+            <?php echo $key->file_dukung ?>
+          </a>
+        </td>
 
         <?php if (Session::get('idSopd') != ''): ?>
           
