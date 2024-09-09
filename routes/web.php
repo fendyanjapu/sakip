@@ -5,6 +5,7 @@ use App\Http\Controllers\ArsipController;
 use App\Http\Controllers\CapaianKinerjaController;
 use App\Http\Controllers\CapaianKinerjaBulananController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\RfkController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -47,3 +48,5 @@ Route::get('arsip/delete/{id}', [ArsipController::class, 'delete'])->name('arsip
 Route::resource('capaian-kinerja', CapaianKinerjaController::class)->except('show');
 
 Route::resource('capaian-kinerja-bulanan', CapaianKinerjaBulananController::class)->except('show');
+
+Route::resource('rfk', RfkController::class)->except('show');

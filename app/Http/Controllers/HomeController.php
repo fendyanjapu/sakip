@@ -92,7 +92,8 @@ class HomeController extends Controller
     public function download($id)
     {
         $arsip = Arsip::find($id);
-        $file = public_path()."/storage/file/arsip/".$arsip->user_id."/".$arsip->dokumen;
+        // $file = public_path()."/storage/file/arsip/".$arsip->user_id."/".$arsip->dokumen; // Local
+        $file = storage_path()."/app/public/file/arsip/".$arsip->user_id."/".$arsip->dokumen; // Hosting
         $headers = array('Content-Type: application/pdf',);
         return Response::download($file, $arsip->dokumen, $headers);
     }

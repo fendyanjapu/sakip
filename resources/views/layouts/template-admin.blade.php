@@ -128,7 +128,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 								<ul>
 									<li><a href="{{ route('capaian-kinerja.index') }}">Capaian Kinerja Per Triwulan</a></li>
 									<li><a href="{{ route('capaian-kinerja-bulanan.index') }}">Capaian Kinerja Per Bulan (IKU)</a></li>
-									<li><a href="">Capaian Kinerja Per Bulan (RFK)</a></li>
+									<li><a href="{{ route('rfk.index') }}">Capaian Kinerja Per Bulan (RFK)</a></li>
 								</ul>
 							</li>
 							<li><a href="#"><div class="item-sidemenu"><i class="fa fa-file" data-toggle="tooltip" title = "RFK"></i><span>RFK Format 1 dan e81</span>

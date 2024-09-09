@@ -19,8 +19,8 @@ return new class extends Migration
             $table->string('target_keuangan');
             $table->string('realisasi_keuangan');
             $table->string('realisasi_fisik');
-            $table->string('prosentasi_fisik');
-            $table->string('prosentasi_keuangan');
+            $table->string('prosentase_fisik');
+            $table->string('prosentase_keuangan');
             $table->string('file_dukung');
             $table->string('nama_file');
             $table->char('tahun', length:4);
