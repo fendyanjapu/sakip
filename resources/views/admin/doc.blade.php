@@ -4,9 +4,7 @@
 
 	$x        = explode('.', $doc);
 	$ekstensi = strtolower(end($x));
-	// $host     = url('storage/arsip/'.$id_sopd.'/'); // Local
-	// 	$host     = 'https://apps.baritokualakab.go.id/sakip/upload/arsip/'.$id_sopd.'/';
-	$host     = env('APP_URL')."/storage/file/arsip/".$id_sopd."/"; // Hosting
+	$host     = env('APP_URL')."/storage/file/arsip/".$id_sopd."/";
 	$src      = 'https://view.officeapps.live.com/op/embed.aspx?src='.$host.$doc;
 
     // echo $host.$doc;
