@@ -7,122 +7,122 @@
         <div class="form-group">
             <label class="col-sm-2 control-label">IKU:</label>
             <div class="col-sm-8">
-                <input type="text" class="form-control" name="iku">
+                <input type="text" class="form-control" name="iku" required>
             </div>
         </div>
         <div class="form-group">
               <label class="col-sm-2 control-label">SATUAN:</label>
               <div class="col-sm-8">
-                  <input type="text" class="form-control" name="satuan">
+                  <input type="text" class="form-control" name="satuan" required>
               </div>
           </div>
         <!-- bulanan -->
       <div class="form-group">
             <label class="col-sm-2 control-label">Januari:</label>
             <div class="col-sm-4">
-                <input type="text" class="form-control" name="t_jan" placeholder="Target">
+                <input type="text" class="form-control" name="t_jan" placeholder="Target" required>
             </div>
             <div class="col-sm-4">
-                <input type="text" class="form-control" name="r_jan" placeholder="Realisasi">
+                <input type="text" class="form-control" name="r_jan" placeholder="Realisasi" required>
             </div>
         </div>
       <div class="form-group">
             <label class="col-sm-2 control-label">Februari:</label>
             <div class="col-sm-4">
-                <input type="text" class="form-control" name="t_feb" placeholder="Target">
+                <input type="text" class="form-control" name="t_feb" placeholder="Target" required>
             </div>
             <div class="col-sm-4">
-                <input type="text" class="form-control" name="r_feb" placeholder="Realisasi">
+                <input type="text" class="form-control" name="r_feb" placeholder="Realisasi" required>
             </div>
         </div>
       <div class="form-group">
             <label class="col-sm-2 control-label">Maret:</label>
             <div class="col-sm-4">
-                <input type="text" class="form-control" name="t_mar" placeholder="Target">
+                <input type="text" class="form-control" name="t_mar" placeholder="Target" required>
             </div>
             <div class="col-sm-4">
-                <input type="text" class="form-control" name="r_mar" placeholder="Realisasi">
+                <input type="text" class="form-control" name="r_mar" placeholder="Realisasi" required>
             </div>
         </div>
       <div class="form-group">
             <label class="col-sm-2 control-label">April:</label>
             <div class="col-sm-4">
-                <input type="text" class="form-control" name="t_apr" placeholder="Target">
+                <input type="text" class="form-control" name="t_apr" placeholder="Target" required>
             </div>
             <div class="col-sm-4">
-                <input type="text" class="form-control" name="r_apr" placeholder="Realisasi">
+                <input type="text" class="form-control" name="r_apr" placeholder="Realisasi" required>
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-2 control-label">Mei:</label>
             <div class="col-sm-4">
-                <input type="text" class="form-control" name="t_mei" placeholder="Target">
+                <input type="text" class="form-control" name="t_mei" placeholder="Target" required>
             </div>
             <div class="col-sm-4">
-                <input type="text" class="form-control" name="r_mei" placeholder="Realisasi">
+                <input type="text" class="form-control" name="r_mei" placeholder="Realisasi" required>
             </div>
         </div>
       <div class="form-group">
             <label class="col-sm-2 control-label">Juni:</label>
             <div class="col-sm-4">
-                <input type="text" class="form-control" name="t_jun" placeholder="Target">
+                <input type="text" class="form-control" name="t_jun" placeholder="Target" required>
             </div>
             <div class="col-sm-4">
-                <input type="text" class="form-control" name="r_jun" placeholder="Realisasi">
+                <input type="text" class="form-control" name="r_jun" placeholder="Realisasi" required>
             </div>
         </div>
       <div class="form-group">
             <label class="col-sm-2 control-label">Juli:</label>
             <div class="col-sm-4">
-                <input type="text" class="form-control" name="t_jul" placeholder="Target">
+                <input type="text" class="form-control" name="t_jul" placeholder="Target" required>
             </div>
             <div class="col-sm-4">
-                <input type="text" class="form-control" name="r_jul" placeholder="Realisasi">
+                <input type="text" class="form-control" name="r_jul" placeholder="Realisasi" required>
             </div>
         </div>
       <div class="form-group">
             <label class="col-sm-2 control-label">Agustus:</label>
             <div class="col-sm-4">
-                <input type="text" class="form-control" name="t_ags" placeholder="Target">
+                <input type="text" class="form-control" name="t_ags" placeholder="Target" required>
             </div>
             <div class="col-sm-4">
-                <input type="text" class="form-control" name="r_ags" placeholder="Realisasi">
+                <input type="text" class="form-control" name="r_ags" placeholder="Realisasi" required>
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-2 control-label">September:</label>
             <div class="col-sm-4">
-                <input type="text" class="form-control" name="t_sep" placeholder="Target">
+                <input type="text" class="form-control" name="t_sep" placeholder="Target" required>
             </div>
             <div class="col-sm-4">
-                <input type="text" class="form-control" name="r_sep" placeholder="Realisasi">
+                <input type="text" class="form-control" name="r_sep" placeholder="Realisasi" required>
             </div>
         </div>
       <div class="form-group">
             <label class="col-sm-2 control-label">Oktober:</label>
             <div class="col-sm-4">
-                <input type="text" class="form-control" name="t_okt" placeholder="Target">
+                <input type="text" class="form-control" name="t_okt" placeholder="Target" required>
             </div>
             <div class="col-sm-4">
-                <input type="text" class="form-control" name="r_okt" placeholder="Realisasi">
+                <input type="text" class="form-control" name="r_okt" placeholder="Realisasi" required>
             </div>
         </div>
       <div class="form-group">
             <label class="col-sm-2 control-label">November:</label>
             <div class="col-sm-4">
-                <input type="text" class="form-control" name="t_nov" placeholder="Target">
+                <input type="text" class="form-control" name="t_nov" placeholder="Target" required>
             </div>
             <div class="col-sm-4">
-                <input type="text" class="form-control" name="r_nov" placeholder="Realisasi">
+                <input type="text" class="form-control" name="r_nov" placeholder="Realisasi" required>
             </div>
         </div>
       <div class="form-group">
             <label class="col-sm-2 control-label">Desember:</label>
             <div class="col-sm-4">
-                <input type="text" class="form-control" name="t_des" placeholder="Target">
+                <input type="text" class="form-control" name="t_des" placeholder="Target" required>
             </div>
             <div class="col-sm-4">
-                <input type="text" class="form-control" name="r_des" placeholder="Realisasi">
+                <input type="text" class="form-control" name="r_des" placeholder="Realisasi" required>
             </div>
         </div>
         

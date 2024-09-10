@@ -61,28 +61,28 @@
       <div class="form-group">
             <label class="col-sm-2 control-label">Target:</label>
             <div class="col-sm-4">
-                <input type="text" class="form-control" name="target_fisik" id="target_fisik" placeholder="Fisik">
+                <input type="text" class="form-control" name="target_fisik" id="target_fisik" placeholder="Fisik" required>
             </div>
             <div class="col-sm-4">
-                <input type="text" class="form-control" name="target_keuangan" id="target_keuangan" placeholder="Keuangan">
+                <input type="text" class="form-control" name="target_keuangan" id="target_keuangan" placeholder="Keuangan" required>
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-2 control-label">Realisasi:</label>
             <div class="col-sm-4">
-                <input type="text" class="form-control" name="realisasi_fisik" id="realisasi_fisik" placeholder="Fisik">
+                <input type="text" class="form-control" name="realisasi_fisik" id="realisasi_fisik" placeholder="Fisik" required>
             </div>
             <div class="col-sm-4">
-                <input type="text" class="form-control" name="realisasi_keuangan" id="realisasi_keuangan" placeholder="Keuangan">
+                <input type="text" class="form-control" name="realisasi_keuangan" id="realisasi_keuangan" placeholder="Keuangan" required>
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-2 control-label">Presentase:</label>
             <div class="col-sm-4">
-                <input type="text" class="form-control" name="prosentase_fisik" id="prosentase_fisik" placeholder="Fisik">
+                <input type="text" class="form-control" name="prosentase_fisik" id="prosentase_fisik" placeholder="Fisik" required>
             </div>
             <div class="col-sm-4">
-                <input type="text" class="form-control" name="prosentase_keuangan" id="prosentase_keuangan" placeholder="Keuangan">
+                <input type="text" class="form-control" name="prosentase_keuangan" id="prosentase_keuangan" placeholder="Keuangan" required>
             </div>
         </div>
 
