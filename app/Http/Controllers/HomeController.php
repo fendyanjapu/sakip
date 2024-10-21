@@ -121,8 +121,8 @@ class HomeController extends Controller
             }
 
             if ($level == 1) {
-                // return redirect()->to('superadmin');
-                return "superadmin";
+                return redirect()->to('admin');
+                // return "superadmin";
             } else {
                 return redirect()->to('admin');
             }
