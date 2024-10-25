@@ -72,7 +72,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					<div class="inner-block" style="min-height: 1000px">
 					    <div class="waluh">
 					        <a class="faqs"><i class="fa fa-question-circle" aria-hidden="true"></i> FAQ</a>
-					        <a href="{{ route('home.login') }}" class="logons"><i class="fa fa-user-circle" aria-hidden="true">
+					        <a href="{{ route('login') }}" class="logons"><i class="fa fa-user-circle" aria-hidden="true">
 					        </i> MASUK</a>
 					    </div>
 						@yield('content')

@@ -25,17 +25,13 @@
   });
 </script>
 <h2> 
-    <?php if (auth()->user()->jenis_sopd != '4') { ?> 
-    <div class="par-text">Capaian Kinerja Pejabat Esselon II Tahun 2024</div>
-    <?php } else { ?>
-    <div class="par-text">Capaian Kinerja Pejabat Esselon III Tahun 2024</div>
-    <?php } ?>
+    <div class="par-text">RFK Kegiatan</div>
     <div class="par-tex2">
         <?php echo auth()->user()->level != '1' ? auth()->user()->nama_sopd : ''  ?>
 </h2><br>
 <?php if (auth()->user()->jenis_sopd != '0' && auth()->user()->level != '1'): ?>
   
-    <a href="{{ route('rfk.create') }}"
+    <a href="{{ route('rfk-kegiatan.create') }}"
       class="btn btn-primary" title="Tambah"><i class="fa fa-plus"> Tambah</i></a><br><br><br>
     @if (session()->has('success'))
       <div class="alert alert-success" role="alert">
@@ -46,30 +42,25 @@
 <table id="tabel" class="table table-striped table-bordered" >
   <thead>
     <tr>
-      <th style="vertical-align: middle;" width="15px" rowspan="2">NO</th>
+      <th style="vertical-align: middle;" width="15px" >NO</th>
       
       <?php if (auth()->user()->level == '1'): ?>
-      <th style="vertical-align: middle;" rowspan="2">SKPD</th>
+      <th style="vertical-align: middle;" >SKPD</th>
       <?php endif; ?>
-      <th style="vertical-align: middle;" rowspan="2">BULAN</th>
+      <th style="vertical-align: middle;" >KODE</th>
+      <th style="vertical-align: middle;" >SASARAN</th>
+      <th style="vertical-align: middle;" >PROGRAM</th>
+      <th style="vertical-align: middle;" >KEGIATAN</th>
+      <th style="vertical-align: middle;" >INDIKATOR KINERJA</th>
+      <th style="vertical-align: middle;" >SATUAN</th>
+      <th style="vertical-align: middle;" >TARGET RENSTRA</th>
+      <th style="vertical-align: middle;" >REALISASI PENCAPAIAN</th>
+      <th style="vertical-align: middle;" >TARGET KINERJA</th>
+      <th style="vertical-align: middle;" >KETERANGAN</th>
       
-      <th style="vertical-align: middle;" colspan="2">TARGET</th>
-      <th style="vertical-align: middle;" colspan="2">REALISASI</th>
-      <th style="vertical-align: middle;" colspan="2">PRESENTASE</th>
-      <th rowspan="2">FILE DUKUNG</th>
-      <?php if (auth()->user()->level != '1'): ?>
-        
-          <th style="vertical-align: middle;" width="180px" rowspan="2">#</th>
-        
+      <?php if (auth()->user()->jenis_sopd != '0'): ?>
+          <th style="vertical-align: middle;" width="180px">#</th>
       <?php endif; ?>
-    </tr>
-    <tr>
-      <th>FISIK</th>
-      <th>KEUANGAN</th>
-      <th>FISIK</th>
-      <th>KEUANGAN</th>
-      <th>FISIK</th>
-      <th>KEUANGAN</th>
     </tr>
     
   </thead>
@@ -81,26 +72,25 @@
         <?php if (auth()->user()->level == '1'): ?>
         <td><?php echo $key->nama_sopd ?></td>
         <?php endif; ?>
-        <td style="text-align: center"><?php echo $key->bulan ?></td>
-        
-        <td style="text-align: center"><?php echo $key->target_fisik ?></td>
-        <td style="text-align: center"><?php echo $key->target_keuangan ?></td>
-        <td style="text-align: center"><?php echo $key->realisasi_keuangan ?></td>
-        <td style="text-align: center"><?php echo $key->realisasi_fisik ?></td>
-        <td style="text-align: center"><?php echo $key->prosentase_fisik ?></td>
-        <td style="text-align: center"><?php echo $key->prosentase_keuangan ?></td>
-        <td>
-          <a href="{{ route('rfk.show', ['rfk' => $key->id]) }}" target="_blank">
-            <?php echo $key->file_dukung ?>
-          </a>
+        <td style="text-align: center">
+            {{ $key->rfkProgram->kode_a." ".$key->rfkProgram->kode_b." ".$key->rfkProgram->program_kode." ".$key->kegiatan_kode }}
         </td>
+        <td style="text-align: center"><?php echo $key->kegiatan_sasaran ?></td>
+        <td style="text-align: center"><?php echo $key->rfkProgram->program ?></td>
+        <td style="text-align: center"><?php echo $key->kegiatan ?></td>
+        <td style="text-align: center"><?php echo $key->kegiatan_indikator_kinerja ?></td>
+        <td style="text-align: center"><?php echo $key->kegiatan_satuan ?></td>
+        <td style="text-align: center"><?php echo $key->kegiatan_target_renstra_k ?></td>
+        <td style="text-align: center"><?php echo $key->kegiatan_realisasi_pencapaian_k ?></td>
+        <td style="text-align: center"><?php echo $key->kegiatan_target_kinerja_k ?></td>
+        <td style="text-align: center"><?php echo $key->kegiatan_ket ?></td>
 
-        <?php if (auth()->user()->level != '1'): ?>
+        <?php if (auth()->user()->jenis_sopd != ''): ?>
           
             <td style="text-align: center;">
-              <a href="{{ route('rfk.edit', ['rfk' => $key->id]) }}"
+              <a href="{{ route('rfk-kegiatan.edit', ['rfk_kegiatan' => $key->id]) }}"
                 title="Edit" class="btn btn-success"><i class="fa fa-edit"></i>Edit</a>
-                <form action="{{ route('rfk.destroy', ['rfk' => $key->id]) }}" method="POST">
+                <form action="{{ route('rfk-kegiatan.destroy', ['rfk_kegiatan' => $key->id]) }}" method="POST">
                     @csrf
                     @method('delete')
                     <button class="btn btn-primary" onclick="return confirm('Hapus data?')"><i class="fa fa-trash"> Hapus</i></button>

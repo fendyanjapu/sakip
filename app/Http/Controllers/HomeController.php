@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Arsip;
+use Response;
 use App\Models\Menu;
 use App\Models\User;
+use App\Models\Arsip;
 use App\Models\JenisSopd;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
-use Response;
 
 class HomeController extends Controller
 {
@@ -105,28 +106,42 @@ class HomeController extends Controller
 
     public function loginAct(Request $request)
     {
-        $username = $request->username;
-        $cek = array('username'=>$username,'password'=>sha1($request->password));
-        $user = User::where($cek);
-        if($user->count() == null){
-            return view('home.login-failed');
-        } else {
-            foreach ($user->get() as $key) {
-                $level = $key->level;
-                Session::put('idSopd', $key->id);
-                Session::put('username', $username);
-                Session::put('namaSopd', $key->nama_sopd);
-                Session::put('level', $level);
-                Session::put('jenisSopd', $key->jenis_sopd);
-            }
+        // $username = $request->username;
+        // $cek = array('username'=>$username,'password'=>sha1($request->password));
+        // $user = User::where($cek);
+        // if($user->count() == null){
+        //     return view('home.login-failed');
+        // } else {
+        //     foreach ($user->get() as $key) {
+        //         $level = $key->level;
+        //         Session::put('idSopd', $key->id);
+        //         Session::put('username', $username);
+        //         Session::put('namaSopd', $key->nama_sopd);
+        //         Session::put('level', $level);
+        //         Session::put('jenisSopd', $key->jenis_sopd);
+        //     }
 
-            if ($level == 1) {
-                return redirect()->to('admin');
-                // return "superadmin";
-            } else {
-                return redirect()->to('admin');
-            }
+        //     if ($level == 1) {
+        //         return redirect()->to('admin');
+        //         // return "superadmin";
+        //     } else {
+        //         return redirect()->to('admin');
+        //     }
             
+        // }
+
+        $password = sha1($request->password);
+
+        $credentials = $request->validate([
+            'username' => 'required',
+        ]);
+
+        $credentials['password'] = $password;
+
+        if(Auth::attempt($credentials)) {
+            return redirect()->intended('/admin');
+        } else {
+            return redirect()->back()->with('error', 'Nama Pengguna atau Kata Sandi Salah!');
         }
     }
 }

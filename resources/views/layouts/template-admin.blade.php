@@ -134,8 +134,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							<li><a href="#"><div class="item-sidemenu"><i class="fa fa-file" data-toggle="tooltip" title = "RFK"></i><span>RFK Format 1 dan e81</span>
 								</div><div class="item-side-very-side"><span class="fa fa-angle-right"></span></div></a>
 								<ul>
-									<li><a href="#">Program</a></li>
-									<li><a href="#">Kegiatan</a></li>
+									<li><a href="{{ route('rfk-program.index') }}">Program</a></li>
+									<li><a href="{{ route('rfk-kegiatan.index') }}">Kegiatan</a></li>
 									<li><a href="#">Subkegiatan</a></li>
 									<li><a href="#">Realisasi</a></li>
 								</ul>

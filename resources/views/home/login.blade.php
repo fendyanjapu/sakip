@@ -27,13 +27,17 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<!--static chart-->
 </head>
 <body>
-
+	
 			<div class="login-page">
 				<h1 align="center">Sistem Akuntabilitas Kinerja Instansi <p> Pemerintah Kabupaten Barito Kuala </h1><br>
 				<center><img src="{{ asset('assets/images/logo.png') }}" alt="BATOLA" width="100"></center><br>
 				<div class="login-main">
-
 					<div class="login-block">
+						@if (session()->has('error'))
+						<div class="alert alert-danger" role="alert">
+						{{ session('error') }}
+						</div>
+					@endif
 						<form method="post" action="{{ route('home.loginAct') }}">
                             @csrf
 							<input type="text" name="username" placeholder="Nama Pengguna" required="" style="background: #fafafa">

@@ -12,15 +12,15 @@ class ArsipController extends Controller
 {
     public function index($jenis_dokumen)
     {
-        if (Session::get('level') == 1) {
+        if (auth()->user()->level == 1) {
             $arsips = Arsip::join('users', 'users.id', '=', 'arsips.user_id')->where('jenis_dokumen', '=', $jenis_dokumen)->orderBy('nama_sopd', 'asc')->get();
         } else {
-            $arsips = Arsip::where('user_id', '=', Session::get('idSopd'))->where('jenis_dokumen', '=', $jenis_dokumen)->orderBy('nama_dokumen', 'asc')->get();
+            $arsips = Arsip::where('user_id', '=', auth()->user()->id)->where('jenis_dokumen', '=', $jenis_dokumen)->orderBy('nama_dokumen', 'asc')->get();
         }
 
         return view('admin.list', [
             'arsips' => $arsips,
-            'judul' => $jenis_dokumen." ".Session::get('namaSopd'),
+            'judul' => $jenis_dokumen." ".auth()->user()->nama_sopd,
             'jenis_dokumen' => $jenis_dokumen
         ]);
     }

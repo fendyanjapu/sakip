@@ -14,7 +14,7 @@ class RfkController extends Controller
     public function index()
     {
         $rfks = Rfk::
-        where('user_id', '=', Session::get('idSopd'))
+        where('user_id', '=', auth()->user()->id)
             ->where('tahun', '=', date('Y'))
             ->get();
         return view('rfk.index', [
@@ -35,7 +35,7 @@ class RfkController extends Controller
      */
     public function store(Request $request)
     {
-        $sopd = Session::get('idSopd');
+        $sopd = auth()->user()->id;
         $rules = [
             'bulan' => "required|max:255",
             'target_fisik' => "required|max:255",
