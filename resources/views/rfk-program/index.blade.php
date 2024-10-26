@@ -13,7 +13,7 @@
 <script>
   $(document).ready(function(){
     $('#tabel').DataTable( {
-    // scrollY:        "300px",
+        scrollY:        "600px",
         scrollX:        false,
         scrollCollapse: true,
         fixedColumns: true,
@@ -81,7 +81,7 @@
         <td style="text-align: center"><?php echo $key->target_kinerja_k ?></td>
         <td style="text-align: center"><?php echo $key->program_ket ?></td>
 
-        <?php if (auth()->user()->jenis_sopd != ''): ?>
+        <?php if (auth()->user()->jenis_sopd != '0'): ?>
           
             <td style="text-align: center;">
               <a href="{{ route('rfk-program.edit', ['rfk_program' => $key->id]) }}"

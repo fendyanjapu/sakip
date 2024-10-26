@@ -136,8 +136,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 								<ul>
 									<li><a href="{{ route('rfk-program.index') }}">Program</a></li>
 									<li><a href="{{ route('rfk-kegiatan.index') }}">Kegiatan</a></li>
-									<li><a href="#">Subkegiatan</a></li>
-									<li><a href="#">Realisasi</a></li>
+									<li><a href="{{ route('rfk-subkegiatan.index') }}">Subkegiatan</a></li>
+									<li><a href="{{ route('rfk-realisasi.index') }}">Realisasi</a></li>
 								</ul>
 							</li>
 							<li><a href="#"><div class="item-sidemenu"><i class="fa fa-file" data-toggle="tooltip" title = "Cetak RFK"></i><span>Cetak RFK</span>

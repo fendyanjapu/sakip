@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
 
             $table->string('subkegiatan_kode');
-            $table->string('subkegiatan_sasatan');
+            $table->string('subkegiatan_sasaran');
             $table->string('subkegiatan');
             $table->string('subkegiatan_indikator_kinerja');
             $table->string('subkegiatan_satuan_k');

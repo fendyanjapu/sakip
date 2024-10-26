@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -28,5 +29,10 @@ class RfkKegiatan extends Model
     public function rfkProgram(): BelongsTo
     {
         return $this->belongsTo(RfkProgram::class);
+    }
+
+    public function rfkSubkegiatan(): HasMany
+    {
+        return $this->hasMany(RfkSubkegiatan::class);
     }
 }

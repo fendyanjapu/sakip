@@ -1,7 +1,25 @@
 @extends('layouts.template-admin')
 
 @section('content')
-
+<script>
+    $(document).ready(function(){
+        $('#program').change(function(){
+			let id = $(this).val();
+			$.ajax({
+				type   : "GET",
+				data   : "id="+id,
+				url    : "{{ route('selectProgram') }}",
+				cache  : false,
+				success: function(result){
+                    let data = $.parseJSON(result);
+					$('#kode_a').val(data.kode_a);
+                    $('#kode_b').val(data.kode_b);
+                    $('#program_kode').val(data.program_kode);
+				}
+			});
+		});
+    });
+</script>
 <div class="dataTables_wrapper">
     <form action="{{ route('rfk-kegiatan.store') }}" method="post" class="form-horizontal" enctype="multipart/form-data">
         @csrf

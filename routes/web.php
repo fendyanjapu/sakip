@@ -2,11 +2,14 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RfkController;
+use App\Http\Controllers\AjaxController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ArsipController;
 use App\Http\Controllers\RfkProgramController;
 use App\Http\Controllers\RfkKegiatanController;
+use App\Http\Controllers\RfkRealisasiContoller;
+use App\Http\Controllers\RfkSubkegiatanContoller;
 use App\Http\Controllers\CapaianKinerjaController;
 use App\Http\Controllers\CapaianKinerjaBulananController;
 
@@ -48,6 +51,14 @@ Route::middleware('auth')->group(function() {
 
     Route::get('arsip/delete/{id}', [ArsipController::class, 'delete'])->name('arsip.delete');
 
+    Route::get('ajax/select-program', [AjaxController::class, 'selectProgram'])->name('selectProgram');
+
+    Route::get('ajax/select-kegiatan', [AjaxController::class, 'selectKegiatan'])->name('selectKegiatan');
+
+
+    Route::get('ajax/select-program-kegiatan', [AjaxController::class, 'selectProgramKegiatan'])->name('selectProgramKegiatan');
+
+
     Route::resource('capaian-kinerja', CapaianKinerjaController::class)->except('show');
 
     Route::resource('capaian-kinerja-bulanan', CapaianKinerjaBulananController::class)->except('show');
@@ -57,4 +68,8 @@ Route::middleware('auth')->group(function() {
     Route::resource('rfk-program', RfkProgramController::class)->except('show');
 
     Route::resource('rfk-kegiatan', RfkKegiatanController::class)->except('show');
+
+    Route::resource('rfk-subkegiatan', RfkSubkegiatanContoller::class)->except('show');
+
+    Route::resource('rfk-realisasi', RfkRealisasiContoller::class)->except('show');
 });

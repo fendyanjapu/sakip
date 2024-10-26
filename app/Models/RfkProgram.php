@@ -30,4 +30,9 @@ class RfkProgram extends Model
     {
         return $this->hasMany(RfkKegiatan::class);
     }
+
+    public function rfkSubkegiatan(): HasMany
+    {
+        return $this->hasMany(RfkSubkegiatan::class);
+    }
 }

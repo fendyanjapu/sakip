@@ -106,30 +106,6 @@ class HomeController extends Controller
 
     public function loginAct(Request $request)
     {
-        // $username = $request->username;
-        // $cek = array('username'=>$username,'password'=>sha1($request->password));
-        // $user = User::where($cek);
-        // if($user->count() == null){
-        //     return view('home.login-failed');
-        // } else {
-        //     foreach ($user->get() as $key) {
-        //         $level = $key->level;
-        //         Session::put('idSopd', $key->id);
-        //         Session::put('username', $username);
-        //         Session::put('namaSopd', $key->nama_sopd);
-        //         Session::put('level', $level);
-        //         Session::put('jenisSopd', $key->jenis_sopd);
-        //     }
-
-        //     if ($level == 1) {
-        //         return redirect()->to('admin');
-        //         // return "superadmin";
-        //     } else {
-        //         return redirect()->to('admin');
-        //     }
-            
-        // }
-
         $password = sha1($request->password);
 
         $credentials = $request->validate([
