@@ -55,8 +55,9 @@ Route::middleware('auth')->group(function() {
 
     Route::get('ajax/select-kegiatan', [AjaxController::class, 'selectKegiatan'])->name('selectKegiatan');
 
-
     Route::get('ajax/select-program-kegiatan', [AjaxController::class, 'selectProgramKegiatan'])->name('selectProgramKegiatan');
+
+    Route::get('ajax/select-kegiatan-subkegiatan', [AjaxController::class, 'selectProgramKegiatan'])->name('selectKegiatanSubkegiatan');
 
 
     Route::resource('capaian-kinerja', CapaianKinerjaController::class)->except('show');

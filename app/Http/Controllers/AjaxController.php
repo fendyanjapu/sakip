@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\RfkKegiatan;
 use App\Models\RfkProgram;
+use App\Models\RfkKegiatan;
 use Illuminate\Http\Request;
+use App\Models\RfkSubkegiatan;
 
 class AjaxController extends Controller
 {
@@ -32,5 +33,15 @@ class AjaxController extends Controller
         $rfkKegiatan = RfkKegiatan::findOrFail($id);
 
         return json_encode($rfkKegiatan);
+    }
+
+    public function selectKegiatanSubkegiatan(Request $request)
+    {
+        $id = $request->id;
+        $rfkSubkegiatans = RfkSubkegiatan::where('rfk_kegiatan_id', '=', $id)->get();
+        echo "<option value='' selected hidden></option>";
+        foreach ($rfkSubkegiatans as $rfkSubkegiatan) {
+            echo "<option value='".$rfkSubkegiatan->id."'>".$rfkSubkegiatan->subkegiatan."</option>";
+        }
     }
 }
