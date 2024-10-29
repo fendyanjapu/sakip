@@ -14,7 +14,7 @@ class CapaianKinerjaController extends Controller
     public function index()
     {
         $capaianKinerjas = CapaianKinerja::
-            where('user_id', '=', Session::get('idSopd'))
+            where('user_id', '=', auth()->user()->id)
             ->where('tahun', '=', date('Y'))
             ->get();
         return view('capaian-kinerja.index', [
@@ -37,7 +37,7 @@ class CapaianKinerjaController extends Controller
     {
         $data = $request->all();
         $data['tahun'] = date('Y');
-        $data['user_id'] = Session::get('idSopd');
+        $data['user_id'] = auth()->user()->id;
 
         CapaianKinerja::create($data);
 

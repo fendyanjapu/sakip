@@ -10,15 +10,15 @@
 		} );
 	});
 </script>
-<h2><?php if (Session::get('jenisSopd') != '4') { ?> 
+<h2><?php if (auth()->user()->jenis_sopd != '4') { ?> 
     <div class="par-text">Capaian Kinerja Pejabat Esselon II Tahun 2024</div>
     <?php } else { ?>
     <div class="par-text">Capaian Kinerja Pejabat Esselon III Tahun 2024</div>
     <?php } ?>
     <div class="par-tex2">
-        <?php echo Session::get('level') != '1' ? Session::get('namaSopd') : ''  ?>
+        <?php echo auth()->user()->level != '1' ? auth()->user()->nama_sopd : ''  ?>
 </h2><br>
-<?php if (Session::get('idSopd') != '' && Session::get('level') != '1'): ?>
+<?php if (auth()->user()->id != '' && auth()->user()->level != '1'): ?>
     <a href="{{ route('capaian-kinerja.create') }}"
       class="btn btn-primary" title="Tambah"><i class="fa fa-plus"> Tambah</i></a><br><br><br>
 @if (session()->has('success'))
@@ -40,7 +40,7 @@
 			<th rowspan="3" class="sorting" style="vertical-align: middle; text-align: center">Upaya Perbaikan Yang Telah Dilakukan</th>
 			<th rowspan="3" class="sorting" style="vertical-align: middle; text-align: center">Rekomendasi</th>
 			
-      <?php if (Session::get('idSopd') != ''): ?>
+      <?php if (auth()->user()->id != '0'): ?>
           <th rowspan="3" class="sorting" style="vertical-align: middle; text-align: center">#</th>
       <?php endif; ?>
 		</tr>
@@ -84,7 +84,7 @@
 			<td style="text-align: center"><?php echo $key->hambatan_dan_kendala ?></td>
 			<td style="text-align: center"><?php echo $key->upaya_perbaikan_yg_telah_dilakukan ?></td>
 			<td style="text-align: center"><?php echo $key->rekomendasi ?></td>
-	<?php if (Session::get('idSopd') != ''): ?>
+	<?php if (auth()->user()->id != '0'): ?>
 		<td style="text-align: center">
 		  <a href="{{ route('capaian-kinerja.edit', ['capaian_kinerja' => $key->id]) }}"
 			class="btn btn-primary"><i class="fa fa-edit"> Edit</i></a>

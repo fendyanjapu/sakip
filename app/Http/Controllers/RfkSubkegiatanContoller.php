@@ -15,7 +15,7 @@ class RfkSubkegiatanContoller extends Controller
     public function index()
     {
         if (auth()->user()->level == 1) {
-            $rfkSubkegiatans = RfkSubkegiatan::join('users', 'users.id', '=', 'rfk_kegiatans.user_id')->orderBy('nama_sopd', 'asc')->where('tahun', '=', date('Y'))->get();
+            $rfkSubkegiatans = RfkSubkegiatan::join('users', 'users.id', '=', 'rfk_subkegiatans.user_id')->orderBy('nama_sopd', 'asc')->where('tahun', '=', date('Y'))->get();
         } else {
             $rfkSubkegiatans = RfkSubkegiatan::where('user_id', '=', auth()->user()->id)->where('tahun', '=', date('Y'))->get();
         }

@@ -25,15 +25,15 @@
   });
 </script>
 <h2> 
-    <?php if (Session::get('jenisSopd') != '4') { ?> 
+    <?php if (auth()->user()->jenis_sopd != '4') { ?> 
     <div class="par-text">Capaian Kinerja Pejabat Esselon II Tahun 2024</div>
     <?php } else { ?>
     <div class="par-text">Capaian Kinerja Pejabat Esselon III Tahun 2024</div>
     <?php } ?>
     <div class="par-tex2">
-        <?php echo Session::get('level') != '1' ? Session::get('namaSopd') : ''  ?>
+        <?php echo auth()->user()->level != '1' ? auth()->user()->nama_sopd : ''  ?>
 </h2><br>
-<?php if (Session::get('jenisSopd') != '' && Session::get('level') != '1'): ?>
+<?php if (auth()->user()->jenis_sopd != '' && auth()->user()->level != '1'): ?>
   
     <a href="{{ route('capaian-kinerja-bulanan.create') }}"
       class="btn btn-primary" title="Tambah"><i class="fa fa-plus"> Tambah</i></a><br><br><br>
@@ -47,11 +47,11 @@
   <thead>
     <tr>
       <th style="vertical-align: middle;" width="15px" rowspan="3">NO</th>
-      <?php if (Session::get('level') == '1'): ?>
+      <?php if (auth()->user()->level == '1'): ?>
       <th style="vertical-align: middle;" rowspan="3" >SKPD</th>
       <?php endif; ?>
       <th style="vertical-align: middle;" rowspan="3" >IKU</th>
-      <?php if (Session::get('idSopd') != ''): ?>
+      <?php if (auth()->user()->id != '0'): ?>
         
           <th style="vertical-align: middle;" rowspan="3" width="180px">#</th>
         
@@ -117,11 +117,11 @@
     @foreach ($query as $key)
       <tr>
         <td style="text-align: center"><?php echo $loop->iteration ?></td>
-        <?php if (Session::get('level') == '1'): ?>
+        <?php if (auth()->user()->level == '1'): ?>
         <td><?php echo $key->nama_sopd ?></td>
         <?php endif; ?>
         <td><?php echo $key->iku ?></td>
-        <?php if (Session::get('idSopd') != ''): ?>
+        <?php if (auth()->user()->id != '0'): ?>
           
             <td style="text-align: center">
               <a href="{{ route('capaian-kinerja-bulanan.edit', ['capaian_kinerja_bulanan' => $key->id]) }}"

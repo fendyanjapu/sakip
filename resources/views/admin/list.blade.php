@@ -23,7 +23,7 @@
 	});
 </script>
 <?php 
-    if (Session::get('level') == 1) {
+    if (auth()->user()->level == 1) {
         
     }
 ?>
@@ -33,7 +33,7 @@
 	{{ session('success') }}
 	</div>
 @endif
-<?php if (Session::get('idSopd') != null && Session::get('level') != 1): ?>
+<?php if (auth()->user()->id != null && auth()->user()->level != 1): ?>
     <form action="{{ route('arsip.save') }}" method="post" class="form-horizontal" enctype="multipart/form-data">
 		@csrf
     	<div class="form-group">
@@ -63,7 +63,7 @@
 <table id="tabel" class="table table-striped table-bordered" >
 	<thead>
 		<th style="text-align: center">NO</th>
-		<?php if (Session::get('level') == 1): ?>
+		<?php if (auth()->user()->level == 1): ?>
 		<th>Nama SKPD</th>
 		<?php endif ?>
 		<th>Nama Dokumen</th>
@@ -74,7 +74,7 @@
         @foreach ($arsips as $arsip)
         <tr>
 			<td style="text-align: center">{{ $loop->iteration }}</td>
-			<?php if (Session::get('level') == 1): ?>
+			<?php if (auth()->user()->level == 1): ?>
 			<td><?php echo $arsip->nama_sopd ?></td>
 			<?php endif ?>
 			<td><?php echo $arsip->nama_dokumen ?></td>
@@ -82,7 +82,7 @@
 			<td style="text-align: center">
 				<a href="{{ route('docs', ['id' => $arsip->id]) }}" target="_blank" class="btn btn-success" title="Lihat"><i class="fa fa-eye"></i></a>
 				<a href="{{ route('download', ['id' => $arsip->id]) }}" target="_blank" class="btn btn-default" title="Unduh"><i class="fa fa-download"></i></a>
-				<?php if (Session::get('idSopd') != null && Session::get('level') != 1): ?>
+				<?php if (auth()->user()->id != null && auth()->user()->level != 1): ?>
 				<a href="{{ route('arsip.delete', ['id' => $arsip->id]) }}" class="btn btn-default" title="Hapus"><i class="fa fa-eraser"></i></a>
 				
 				<?php endif ?>
