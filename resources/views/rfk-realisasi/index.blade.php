@@ -73,7 +73,7 @@
         <td style="text-align: center"><?php echo $key->bulan ?></td>
         <td style="text-align: center"><?php echo $key->triwulan ?></td>
         <td style="text-align: center"><?php echo $key->jumlah_output ?></td>
-        <td style="text-align: center"><?php echo $key->pagu ?></td>
+        <td style="text-align: center"><?php echo $key->pagu != '' ? number_format($key->pagu) : '' ?></td>
 
         <?php if (auth()->user()->jenis_sopd != '0'): ?>
           
