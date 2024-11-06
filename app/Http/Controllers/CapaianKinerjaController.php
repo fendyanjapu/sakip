@@ -13,10 +13,18 @@ class CapaianKinerjaController extends Controller
      */
     public function index()
     {
-        $capaianKinerjas = CapaianKinerja::
+        if (auth()->user()->level == 1) {
+            $capaianKinerjas = CapaianKinerja::join('users', 'users.id', '=', 'capaian_kinerjas.user_id')
+            ->orderBy('nama_sopd', 'asc')
+            ->where('tahun', '=', date('Y'))
+            ->get();
+        } else {
+            $capaianKinerjas = CapaianKinerja::
             where('user_id', '=', auth()->user()->id)
             ->where('tahun', '=', date('Y'))
             ->get();
+        }
+        
         return view('capaian-kinerja.index', [
             'query' => $capaianKinerjas
         ]);

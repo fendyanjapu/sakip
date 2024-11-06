@@ -13,7 +13,7 @@
 <script>
   $(document).ready(function(){
     $('#tabel').DataTable( {
-    scrollY:        "300px",
+        scrollY:        "600px",
         scrollX:        true,
         scrollCollapse: true,
         fixedColumns: true,
@@ -51,7 +51,7 @@
       <th style="vertical-align: middle;" rowspan="3" >SKPD</th>
       <?php endif; ?>
       <th style="vertical-align: middle;" rowspan="3" >IKU</th>
-      <?php if (auth()->user()->id != '0'): ?>
+      <?php if (auth()->user()->id != '0' && auth()->user()->level != '1'): ?>
         
           <th style="vertical-align: middle;" rowspan="3" width="180px">#</th>
         
@@ -121,7 +121,7 @@
         <td><?php echo $key->nama_sopd ?></td>
         <?php endif; ?>
         <td><?php echo $key->iku ?></td>
-        <?php if (auth()->user()->id != '0'): ?>
+        <?php if (auth()->user()->id != '0' && auth()->user()->level != '1'): ?>
           
             <td style="text-align: center">
               <a href="{{ route('capaian-kinerja-bulanan.edit', ['capaian_kinerja_bulanan' => $key->id]) }}"

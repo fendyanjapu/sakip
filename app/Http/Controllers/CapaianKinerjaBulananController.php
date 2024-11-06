@@ -13,10 +13,18 @@ class CapaianKinerjaBulananController extends Controller
      */
     public function index()
     {
-        $capaianKinerjaBulanans = CapaianKinerjaBulanan::
-        where('user_id', '=', auth()->user()->id)
+        if (auth()->user()->level == 1) {
+            $capaianKinerjaBulanans = CapaianKinerjaBulanan::join('users', 'users.id', '=', 'capaian_kinerja_bulanans.user_id')
+            ->orderBy('nama_sopd', 'asc')
             ->where('tahun', '=', date('Y'))
             ->get();
+        } else {
+            $capaianKinerjaBulanans = CapaianKinerjaBulanan::
+            where('user_id', '=', auth()->user()->id)
+            ->where('tahun', '=', date('Y'))
+            ->get();
+        }
+        
         return view('capaian-kinerja-bulanan.index', [
             'query' => $capaianKinerjaBulanans
         ]);

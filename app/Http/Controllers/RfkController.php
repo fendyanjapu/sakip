@@ -13,10 +13,18 @@ class RfkController extends Controller
      */
     public function index()
     {
-        $rfks = Rfk::
-        where('user_id', '=', auth()->user()->id)
+        if (auth()->user()->level == 1) {
+            $rfks = Rfk::join('users', 'users.id', '=', 'rfks.user_id')
+            ->orderBy('nama_sopd', 'asc')
             ->where('tahun', '=', date('Y'))
             ->get();
+        } else {
+            $rfks = Rfk::
+            where('user_id', '=', auth()->user()->id)
+                ->where('tahun', '=', date('Y'))
+                ->get();
+        }
+        
         return view('rfk.index', [
             'query' => $rfks
         ]);

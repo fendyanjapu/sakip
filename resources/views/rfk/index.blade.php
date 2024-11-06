@@ -13,7 +13,7 @@
 <script>
   $(document).ready(function(){
     $('#tabel').DataTable( {
-    // scrollY:        "300px",
+        scrollY:        "600px",
         scrollX:        false,
         scrollCollapse: true,
         fixedColumns: true,
@@ -57,7 +57,7 @@
       <th style="vertical-align: middle;" colspan="2">REALISASI</th>
       <th style="vertical-align: middle;" colspan="2">PRESENTASE</th>
       <th rowspan="2">FILE DUKUNG</th>
-      <?php if (auth()->user()->level != '1'): ?>
+      <?php if (auth()->user()->id != '0' && auth()->user()->level != '1'): ?>
         
           <th style="vertical-align: middle;" width="180px" rowspan="2">#</th>
         
@@ -95,7 +95,7 @@
           </a>
         </td>
 
-        <?php if (auth()->user()->level != '1'): ?>
+        <?php if (auth()->user()->id != '0' && auth()->user()->level != '1'): ?>
           
             <td style="text-align: center;">
               <a href="{{ route('rfk.edit', ['rfk' => $key->id]) }}"

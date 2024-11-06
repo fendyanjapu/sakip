@@ -4,9 +4,14 @@
 <script>
 	$(document).ready(function(){
 		$('#tabel').DataTable( {
-		   "language": {
-            "url": "//cdn.datatables.net/plug-ins/1.10.21/i18n/Indonesian.json"
-        } 
+			scrollY:        "600px",
+			scrollX:        false,
+			scrollCollapse: true,
+			fixedColumns: true,
+			responsive: true,
+			"language": {
+				"url": "//cdn.datatables.net/plug-ins/1.10.21/i18n/Indonesian.json"
+			} 
 		} );
 	});
 </script>
@@ -31,7 +36,9 @@
 	<thead>
 		<tr>
 			<th class="sorting" style="vertical-align: middle; text-align: center" width="15px" rowspan="3">NO</th>
-			
+			<?php if (auth()->user()->level == '1'): ?>
+			<th style="vertical-align: middle; text-align: center" rowspan="3">SKPD</th>
+			<?php endif; ?>
 			<th rowspan="3" class="sorting" style="vertical-align: middle; text-align: center">IKU</th>
 			<th rowspan="3" class="sorting" style="vertical-align: middle; text-align: center">Target Tahunan</th>
 			<th colspan="8" class="sorting" style="text-align: center">Target dan Realisasi</th>
@@ -40,7 +47,7 @@
 			<th rowspan="3" class="sorting" style="vertical-align: middle; text-align: center">Upaya Perbaikan Yang Telah Dilakukan</th>
 			<th rowspan="3" class="sorting" style="vertical-align: middle; text-align: center">Rekomendasi</th>
 			
-      <?php if (auth()->user()->id != '0'): ?>
+      <?php if (auth()->user()->id != '0' && auth()->user()->level != '1'): ?>
           <th rowspan="3" class="sorting" style="vertical-align: middle; text-align: center">#</th>
       <?php endif; ?>
 		</tr>
@@ -69,7 +76,9 @@
 		@foreach ($query as $key)
 		<tr>
 			<td style="text-align: center"><?= $loop->iteration ?></td>
-			
+			<?php if (auth()->user()->level == '1'): ?>
+			<td><?php echo $key->nama_sopd ?></td>
+			<?php endif; ?>
 			<td><?php echo $key->iku ?></td>
 			<td style="text-align: center"><?php echo $key->target ?></td>
 			<td style="text-align: center"><?php echo $key->triwulan_i_target ?></td>
@@ -84,7 +93,7 @@
 			<td style="text-align: center"><?php echo $key->hambatan_dan_kendala ?></td>
 			<td style="text-align: center"><?php echo $key->upaya_perbaikan_yg_telah_dilakukan ?></td>
 			<td style="text-align: center"><?php echo $key->rekomendasi ?></td>
-	<?php if (auth()->user()->id != '0'): ?>
+	<?php if (auth()->user()->id != '0' && auth()->user()->level != '1'): ?>
 		<td style="text-align: center">
 		  <a href="{{ route('capaian-kinerja.edit', ['capaian_kinerja' => $key->id]) }}"
 			class="btn btn-primary"><i class="fa fa-edit"> Edit</i></a>
