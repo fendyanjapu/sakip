@@ -39,7 +39,7 @@
     	<div class="form-group">
     		<label class="col-sm-2 control-label">Nama Dokumen:</label>
     		<div class="col-sm-9">
-    			<input type="hidden" class="form-control" id="user_id" name="user_id" value="{{ Session::get('idSopd') }}">
+    			<input type="hidden" class="form-control" id="user_id" name="user_id" value="{{ auth()->user()->id }}">
     			<input type="hidden" class="form-control" id="jenis_dokumen" name="jenis_dokumen" value="{{ $jenis_dokumen }}">
     			<input type="text" class="form-control" id="nama_dokumen" name="nama_dokumen">
     		</div>
