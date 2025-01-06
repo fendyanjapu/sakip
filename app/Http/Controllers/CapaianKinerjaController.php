@@ -16,12 +16,12 @@ class CapaianKinerjaController extends Controller
         if (auth()->user()->level == 1) {
             $capaianKinerjas = CapaianKinerja::join('users', 'users.id', '=', 'capaian_kinerjas.user_id')
             ->orderBy('nama_sopd', 'asc')
-            ->where('tahun', '=', date('Y'))
+            ->where('tahun', '=', '2024')
             ->get();
         } else {
             $capaianKinerjas = CapaianKinerja::
             where('user_id', '=', auth()->user()->id)
-            ->where('tahun', '=', date('Y'))
+            ->where('tahun', '=', '2024')
             ->get();
         }
         
@@ -44,7 +44,7 @@ class CapaianKinerjaController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-        $data['tahun'] = date('Y');
+        $data['tahun'] = '2024';
         $data['user_id'] = auth()->user()->id;
 
         CapaianKinerja::create($data);
