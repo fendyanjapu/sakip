@@ -16,12 +16,12 @@ class RfkController extends Controller
         if (auth()->user()->level == 1) {
             $rfks = Rfk::join('users', 'users.id', '=', 'rfks.user_id')
             ->orderBy('nama_sopd', 'asc')
-            ->where('tahun', '=', '2024')
+            ->where('tahun', '=', date('Y'))
             ->get();
         } else {
             $rfks = Rfk::
             where('user_id', '=', auth()->user()->id)
-                ->where('tahun', '=', '2024')
+                ->where('tahun', '=', date('Y'))
                 ->get();
         }
         
@@ -63,7 +63,7 @@ class RfkController extends Controller
             $data['nama_file'] = pathinfo($filename, PATHINFO_FILENAME);
         }
         
-        $data['tahun'] = '2024';
+        $data['tahun'] = date('Y');
         $data['user_id'] = $sopd;
 
         Rfk::create($data);

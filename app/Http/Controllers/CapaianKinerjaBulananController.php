@@ -16,12 +16,12 @@ class CapaianKinerjaBulananController extends Controller
         if (auth()->user()->level == 1) {
             $capaianKinerjaBulanans = CapaianKinerjaBulanan::join('users', 'users.id', '=', 'capaian_kinerja_bulanans.user_id')
             ->orderBy('nama_sopd', 'asc')
-            ->where('tahun', '=', '2024')
+            ->where('tahun', '=', date('Y'))
             ->get();
         } else {
             $capaianKinerjaBulanans = CapaianKinerjaBulanan::
             where('user_id', '=', auth()->user()->id)
-            ->where('tahun', '=', '2024')
+            ->where('tahun', '=', date('Y'))
             ->get();
         }
         
@@ -44,7 +44,7 @@ class CapaianKinerjaBulananController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-        $data['tahun'] = '2024';
+        $data['tahun'] = date('Y');
         $data['user_id'] = auth()->user()->id;
 
         CapaianKinerjaBulanan::create($data);
