@@ -26,9 +26,9 @@
 </script>
 <h2> 
     <?php if (auth()->user()->jenis_sopd != '4') { ?> 
-    <div class="par-text">Capaian Kinerja Pejabat Esselon II Tahun 2024</div>
+    <div class="par-text">Capaian Kinerja Pejabat Esselon II Tahun {{ date('Y') }}</div>
     <?php } else { ?>
-    <div class="par-text">Capaian Kinerja Pejabat Esselon III Tahun 2024</div>
+    <div class="par-text">Capaian Kinerja Pejabat Esselon III Tahun {{ date('Y') }}</div>
     <?php } ?>
     <div class="par-tex2">
         <?php echo auth()->user()->level != '1' ? auth()->user()->nama_sopd : ''  ?>
